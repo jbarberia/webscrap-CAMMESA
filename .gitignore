@@ -1,1 +1,8 @@
 __pycache__
+venv/
+.pytest_cache/
+.vscode/
+.eggs/
+*.egg*/
+build/
+dist/

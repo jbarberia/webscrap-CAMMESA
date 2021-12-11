@@ -13,8 +13,7 @@ class SMNScraper():
     def download_by_date(self, date: date) -> None:
         filename = "datohorario{}.txt".format(date.isoformat().replace("-", ""))
         url_string = self.URL_HEADER + filename
-        print(url_string)
-        urlretrieve(url_string, self.download_folder + filename)
+        urlretrieve(url_string, filename)
 
 
 

@@ -1,0 +1,4 @@
+msedge_selenium_tools==3.141.3
+pytest==6.2.5
+selenium==3.141.0
+setuptools==57.4.0
