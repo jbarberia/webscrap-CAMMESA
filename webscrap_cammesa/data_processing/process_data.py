@@ -49,13 +49,14 @@ def parse_smn(folder: str) -> pd.DataFrame:
     data = []
     colspecs = [(0, 8), (8, 14), (14, 20), (20, 26), (26,33), (33, 39), (39, 47), (47, 103)]
     for file in filter(lambda x: x.endswith(".txt"), files):
-        data.append(pd.read_fwf(path(folder, file), skiprows=[1], colspecs=colspecs))
+        data.append(pd.read_fwf(path(folder, file), encoding="iso-8859-1", skiprows=[1], colspecs=colspecs))
     df = pd.concat(data, ignore_index=True)
     # Remove bad data (Nan)
     df = df.dropna()
     # Generate date (Momento) and sort it
     to_str = lambda x: str(int(x))
-    df["Momento"] = df["HORA"].apply(to_str) + "-" + df["FECHA"].apply(to_str)
+    to_str_check_day = lambda x: "0" + to_str(x) if len(to_str(x)) == 7 else to_str(x) # Start with zeros in days
+    df["Momento"] = df["HORA"].apply(to_str) + "-" + df["FECHA"].apply(to_str_check_day)
     df["Momento"] = df["Momento"].apply(lambda x: datetime.strptime(x, "%H-%d%m%Y"))
     df["id"] = (df["Momento"].apply(lambda x: x.strftime("%d-%m-%y %H:%M")))
     # drop unuseful columns
