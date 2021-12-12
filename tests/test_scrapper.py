@@ -1,6 +1,6 @@
 import pytest
 import os
-from pca_renewables import CAMMESAScraper, SMNScraper
+from webscrap_cammesa import CAMMESAScraper, SMNScraper
 from datetime import date
 
 def test_cammesa_scrapper():

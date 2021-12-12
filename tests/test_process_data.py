@@ -1,7 +1,7 @@
 from numpy import fromstring
 import pytest
-from pca_renewables import read_files
-from pca_renewables.data_processing.process_data import parse_cammesa, parse_smn
+from webscrap_cammesa import read_files
+from webscrap_cammesa.data_processing.process_data import parse_cammesa, parse_smn
 from datetime import datetime
 
 def _extract_day(x: str):
