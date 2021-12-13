@@ -20,4 +20,4 @@ def test_read_files() -> None:
     df = read_files("./tests/data", "./tests/data")
     for col in ["Eólico", "Fotovoltaico", "Bioenergías", "Hidráulico"]:
         assert col in df.columns
-    assert df.shape[0] == 47
+    assert df.shape[0] == 577

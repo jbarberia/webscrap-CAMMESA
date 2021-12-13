@@ -10,7 +10,7 @@ from pandas.core.algorithms import unique
 def read_files(cammesa_folder: str, smn_folder: str) -> pd.DataFrame:
     df_cammesa = parse_cammesa(cammesa_folder)
     df_smn = parse_smn(smn_folder)
-    df = pd.merge(df_cammesa, df_smn, on="id", how="inner")
+    df = pd.merge(df_cammesa, df_smn, on="id", how="outer")
     return df
 
 
